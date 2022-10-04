@@ -2,7 +2,9 @@ package com.crud_application.user_list.service;
 
 import com.crud_application.user_list.dto.UsersDto;
 import com.crud_application.user_list.entity.Users;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserConverter {
 
     public Users fromUserDtoToUser(UsersDto usersDto) {
