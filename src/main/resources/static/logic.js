@@ -4,29 +4,37 @@ function searchByLogin() {
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             var user = JSON.parse(this.responseText);
-            var html = '<tr>\n' +
+            var html =
+                '   <tr>\n' +
                 '        <th>User id</th>\n' +
                 '        <th>User name</th>\n' +
                 '        <th>User login</th>\n' +
                 '        <th>User email</th>\n' +
                 '        <th>Delete</th>\n' +
                 '    </tr>';
-            html = html + '<tr><td>' + user.id + '</td>\n' +
+            html = html +
+                '   <tr>' +
+                '        <td>' + user.id + '</td>\n' +
                 '        <td>' + user.name + '</td>\n' +
                 '        <td>' + user.login + '</td>\n' +
                 '        <td>' + user.email + '</td>' +
-                '        <td><button onclick="deleteUser(' + user.id + ')">Delete</button></td></tr>';
+                '        <td><button onclick="deleteUser(' + user.id + ')">Delete</button></td>' +
+                '   </tr>';
             document.getElementById("usersList").innerHTML = html;
         }
     };
     xhttp.open("GET", "http://localhost:8080/users/findByLogin?login=" + login, true);
     xhttp.send();
+
+    loadUsers();
 }
 
 function deleteUser(userId) {
     var xhttp = new XMLHttpRequest();
     xhttp.open("DELETE", "http://localhost:8080/users/delete/" + userId, true);
     xhttp.send();
+
+    loadUsers();
 }
 
 function createUser() {
@@ -47,7 +55,8 @@ function loadUsers() {
     xhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
             var users = JSON.parse(this.responseText);
-            var html = '<tr>\n' +
+            var html =
+                '   <tr>\n' +
                 '        <th>User id</th>\n' +
                 '        <th>User name</th>\n' +
                 '        <th>User login</th>\n' +
@@ -57,11 +66,14 @@ function loadUsers() {
             for (var i = 0; i < users.length; i++) {
                 var user = users[i];
                 console.log(user);
-                html = html + '<tr><td>' + user.id + '</td>\n' +
+                html = html +
+                    '   <tr>' +
+                    '        <td>' + user.id + '</td>\n' +
                     '        <td>' + user.name + '</td>\n' +
                     '        <td>' + user.login + '</td>\n' +
                     '        <td>' + user.email + '</td>' +
-                    '        <td><button onclick="deleteUser(' + user.id + ')">Delete</button></td></tr>';
+                    '        <td><button onclick="deleteUser(' + user.id + ')">Delete</button></td>' +
+                    '   </tr>';
 
             }
             document.getElementById("usersList").innerHTML = html;
