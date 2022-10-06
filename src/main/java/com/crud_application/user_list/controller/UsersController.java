@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.xml.bind.ValidationException;
 import java.util.List;
 
-@AllArgsConstructor
 @RestController
 @RequestMapping("/users")
+@AllArgsConstructor
 @Log
 public class UsersController {
 

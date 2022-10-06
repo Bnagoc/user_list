@@ -12,7 +12,7 @@ public class UserConverter {
         users.setId(usersDto.getId());
         users.setEmail(usersDto.getEmail());
         users.setName(usersDto.getName());
-        users.setLogin(users.getLogin());
+        users.setLogin(usersDto.getLogin());
         return users;
     }
 
